@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+
+.navbar{
+width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.home{
+  margin-left: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movieList {
+  display: flex;
+  overflow-x: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movieList img{
+  width:200px;
+}
+
+.singleMovie{
+  margin:10px;
+}
+
+.singleMovie:hover{
+  cursor: pointer;
+}
+.moviePoster {
+  margin-right: 20px;
+  width: 200px;
+  height: 300px;
+}
+
+.movieDescription{
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.movieDescription img{
+  width: auto;
+  height:auto;
+  max-height: 600px;
+  
+}
+
+.movieDetails {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
+  margin: 20px 50px;
+  padding: 20px;
+  font-size: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navLink{
+  margin: 20px;
 }
