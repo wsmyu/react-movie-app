@@ -1,4 +1,3 @@
-
 .navbar{
 width: 100%;
 }
@@ -91,4 +90,31 @@ width: 100%;
 .favorite-movie span {
   font-size: 1.1em;
   font-weight: 500;
+}
+
+.feedbackForm{
+  margin: 40px;
+}
+
+.Name,.Email{
+ width: 300px;
+}
+
+.favorite-movie span {
+  display: flex;
+  align-items: center;
+}
+
+.favorite-movie img {
+  margin-right: 20px;
+}
+
+
+.favorite-movie span:last-child span {
+  margin-right: 20px;
+}
+
+.addFavourite{
+  width:400px;
+
 }

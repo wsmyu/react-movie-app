@@ -34,7 +34,7 @@ function MovieDescription({ addToFavorites }) {
       <img src={movie.Poster} />
       <div className='movieDetails'>
         <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
-        <button className="btn btn-outline-success" onClick={handleAddToFavorites}>
+        <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
           Add to Favorites
         </button>
 

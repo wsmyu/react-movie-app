@@ -35,7 +35,7 @@ function Feedback() {
     }
 
     return (
-        <Form>
+        <Form className='feedbackForm'>
             {page === 1 ? <FeedbackForm nextPage={nextPage} setFeedbackData={setFeedbackData} /> : null}
             {page === 2 ? <PersonalInfoForm nextPage={nextPage} setPersonalData={setPersonalData} /> : null}
             {page === 3 ? <SummaryPage formData={formData} resetForm={resetForm} submitHandler={submitHandler} /> : null}
