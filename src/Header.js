@@ -17,8 +17,8 @@ function Header(props) {
         <Container>
           <Link to="/" className="navbar-brand">Movie Purchasing App</Link>
           <Nav className='me-auto'>
-            <LinkContainer to="/favourites">
-              <Nav.Link className='navLink'>Favourites</Nav.Link>
+            <LinkContainer to="/favorites">
+              <Nav.Link className='navLink'>Favorites</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/feedback">
               <Nav.Link className='navLink'>Feedback</Nav.Link>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
-function Favourites(props) {
+function Favorites(props) {
     const clearFavorites = () => {
         props.setFavorites([]);
     };
@@ -23,7 +23,7 @@ function Favourites(props) {
     );
 }
 
-export default Favourites
+export default Favorites
 
 function FavoriteMovie({ movie }) {
     return (
