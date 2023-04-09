@@ -6,6 +6,7 @@ import{BrowserRouter,Route,Routes,Link,useNavigate} from 'react-router-dom';
 const MovieList = ({searchValue,setSearchValue}) => {
 
   const [movies,setMovies] =useState([]);
+  
 
   const getMovieRequest = (searchValue) => {
     const url =  `https://www.omdbapi.com/?s=${searchValue}&apikey=41f83b90&plot=full`;
@@ -18,8 +19,7 @@ const MovieList = ({searchValue,setSearchValue}) => {
       .catch((error) => console.log(error));
   };
 
- 
-
+  
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
@@ -29,10 +29,13 @@ const MovieList = ({searchValue,setSearchValue}) => {
   
 
   const handleMovieClick = (movie) => {
+
     navigate(`/moviedescription/${movie.imdbID}`);
     setSearchValue('');
     
   };
+
+ 
 
   return (
     <div className="movieList">
@@ -44,6 +47,7 @@ const MovieList = ({searchValue,setSearchValue}) => {
               src={movie.Poster}
               alt={movie.Title}
             />
+            
           </div>
         ))}
     </div>

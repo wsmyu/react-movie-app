@@ -6,13 +6,21 @@ width: 100%;
   margin-left: 20px;
 }
 
-.movieList {
-  display: flex;
-  overflow-x: auto;
-}
+
 
 .movieList img{
   width:200px;
+}
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:left;
+}
+
+.singleMovie {
+  flex-basis: calc(20% - 20px);
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .singleMovie{
@@ -54,9 +62,10 @@ width: 100%;
 
 
 ::-webkit-scrollbar {
-  background-color: transparent;
-  border-radius: 10px;
+  width: 10px;
+  background-color: #f5f5f5;
 }
+
 
 .navLink{
   margin: 20px;

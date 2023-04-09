@@ -6,10 +6,11 @@ import Container from "react-bootstrap/Container";
 import { LinkContainer } from 'react-router-bootstrap';
 
 function Header(props) {
+
   const handleInputChanges = (e) => {
+   
     props.setSearchValue(e.target.value);
   };
-
 
   return (
     <div className='navbar'>
@@ -18,13 +19,13 @@ function Header(props) {
           <Link to="/" className="navbar-brand">Movie Purchasing App</Link>
           <Nav className='me-auto'>
             <LinkContainer to="/favorites">
-              <Nav.Link className='navLink'>Favorites</Nav.Link>
+              <Nav.Link className='navLink'>Favourites</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/feedback">
               <Nav.Link className='navLink'>Feedback</Nav.Link>
             </LinkContainer>
           </Nav>
-          <input value={props.searchValue} onChange={handleInputChanges} type="text" />
+          <input value={props.searchValue} placeholder='Search' onChange={handleInputChanges} type="text" />
         </Container>
 
       </Navbar>
