@@ -6,10 +6,15 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Feedback from './Feedback';
-
+import Favourites from "./Favourites";
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
+  const [favorites, setFavorites] = useState([]);
+
+  const addToFavorites = (movie) => {
+    setFavorites((prevFavorites) => [...prevFavorites, movie]);
+  };
 
   return (
     <div className="App">
@@ -22,8 +27,10 @@ function App() {
           <Route path="/" element={<Home setSearchValue={setSearchValue} />} />
         )}
         <Route path='/movielist' element={<MovieList searchValue={searchValue} setSearchValue={setSearchValue} />} />
-        <Route path="/moviedescription/:imdbID" element={<MovieDescription />} />
+        <Route path="/moviedescription/:imdbID" element={<MovieDescription addToFavorites={addToFavorites}/>} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/favourites" element={<Favourites favorites={favorites} setFavorites={setFavorites}/>} />
+
       </Routes>
 
 

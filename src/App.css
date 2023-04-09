@@ -71,3 +71,24 @@ width: 100%;
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+.favorite-movie {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.favorite-movie img {
+  width: 60px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.favorite-movie span {
+  font-size: 1.1em;
+  font-weight: 500;
+}
