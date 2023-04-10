@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 
 
-function MovieDescription({ addToFavorites }) {
+function MovieDescription({ addToFavorites,isViewingMovie }) {
   const { imdbID } = useParams();
   const [movie, setMovie] = useState('');
 
@@ -20,14 +20,38 @@ function MovieDescription({ addToFavorites }) {
   };
 
   useEffect(() => {
-    const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=41f83b90&plot=full`;
-    fetch(url)
-      .then(response => response.json())
-      .then(json => {
-        setMovie(json);
-      })
-      .catch(error => console.log(error));
-  }, [imdbID]);
+    if (isViewingMovie) {
+      const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=41f83b90&plot=full`;
+      fetch(url)
+        .then(response => response.json())
+        .then(json => {
+          setMovie(json);
+        })
+        .catch(error => console.log(error));
+    } else {
+      setMovie('');
+    }
+  }, [imdbID, isViewingMovie]);
+
+  if (!isViewingMovie) {
+    return null;
+  }
+  
+  // useEffect(() => {
+  //   const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=41f83b90&plot=full`;
+  //   fetch(url)
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       setMovie(json);
+  //     })
+  //     .catch(error => console.log(error));
+  // }, [imdbID]);
+
+  // useEffect(() => {
+  //   if (isViewingMovie) {
+  //     setIsViewingMovie(false);
+  //   }
+  // }, [isViewingMovie, setIsViewingMovie]);
 
   return (
     <div className='movieDescription'>

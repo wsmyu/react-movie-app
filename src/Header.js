@@ -8,15 +8,19 @@ import { LinkContainer } from 'react-router-bootstrap';
 function Header(props) {
 
   const handleInputChanges = (e) => {
-   
+    props.setIsViewingMovie(false);
     props.setSearchValue(e.target.value);
   };
+
+  const handleLogoClick = () => {
+    props.setSearchValue('');
+  }
 
   return (
     <div className='navbar'>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Link to="/" className="navbar-brand">Movie Purchasing App</Link>
+          <Link to="/" className="navbar-brand" onClick={handleLogoClick}>Movie Purchasing App</Link>
           <Nav className='me-auto'>
             <LinkContainer to="/favorites">
               <Nav.Link className='navLink'>Favourites</Nav.Link>

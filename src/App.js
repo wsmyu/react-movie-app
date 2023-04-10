@@ -11,7 +11,8 @@ import Favorites from "./Favorites";
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [favorites, setFavorites] = useState([]);
-  
+  const [isViewingMovie, setIsViewingMovie] = useState(false);
+
 
   const addToFavorites = (movie) => {
     setFavorites((prevFavorites) => [...prevFavorites, movie]);
@@ -22,20 +23,16 @@ function App() {
   return (
     <div className="App">
 
-      <Header  searchValue={searchValue} setSearchValue={setSearchValue} />
-      <MovieList searchValue={searchValue} setSearchValue={setSearchValue} />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie} />
+      <MovieList searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie}  />
 
       <Routes>
         {searchValue.length === 0 && (
-          <Route path="/" element={<Home setSearchValue={setSearchValue} />} />
+          <Route path="/" element={<Home setSearchValue={setSearchValue} isViewingMovie={isViewingMovie}
+          setIsViewingMovie={setIsViewingMovie} />} />
         )}
-        <Route path='/movielist'  
-          element={<MovieList 
-            searchValue={searchValue} 
-            setSearchValue={setSearchValue} 
-        />} 
-          />
-        <Route path="/moviedescription/:imdbID" element={<MovieDescription addToFavorites={addToFavorites}/>} />
+    
+        <Route path="/moviedescription/:imdbID" element={<MovieDescription addToFavorites={addToFavorites} isViewingMovie={isViewingMovie}/>} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites}/>} />
 

@@ -3,7 +3,7 @@ import{BrowserRouter,Route,Routes,Link,useNavigate} from 'react-router-dom';
 
 
  
-const MovieList = ({searchValue,setSearchValue}) => {
+function MovieList ({searchValue,setSearchValue,setIsViewingMovie})  {
 
   const [movies,setMovies] =useState([]);
   
@@ -19,7 +19,8 @@ const MovieList = ({searchValue,setSearchValue}) => {
       .catch((error) => console.log(error));
   };
 
-  
+
+ 
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
@@ -29,13 +30,10 @@ const MovieList = ({searchValue,setSearchValue}) => {
   
 
   const handleMovieClick = (movie) => {
-
+    setIsViewingMovie(true);
     navigate(`/moviedescription/${movie.imdbID}`);
     setSearchValue('');
-    
   };
-
- 
 
   return (
     <div className="movieList">
