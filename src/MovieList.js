@@ -14,7 +14,6 @@ function MovieList ({searchValue,setSearchValue,setIsViewingMovie})  {
       .then(response => response.json())
       .then((json) => {
         setMovies(json.Search);
-        console.log(movies)
       })
       .catch((error) => console.log(error));
   };
