@@ -44,7 +44,7 @@ function MovieList ({searchValue,setSearchValue,setIsViewingMovie})  {
               src={movie.Poster}
               alt={movie.Title}
             />
-            
+            <p>{movie.Title}</p>
           </div>
         ))}
     </div>

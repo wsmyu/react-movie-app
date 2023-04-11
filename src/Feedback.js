@@ -81,7 +81,7 @@ function FeedbackForm(props) {
             <ProgressBar variant="danger" now={33} />
             <Form>
                 <Form.Group class="form-group">
-                    <Form.Label>How would you rate our website?</Form.Label>
+                    <Form.Label >How would you rate our website?</Form.Label>
                     <div>
                         <Form.Check
                             inline
@@ -332,7 +332,7 @@ function PersonalInfoForm(props) {
                     <div>{errors.includes("age") && <div id="error">Please select an option!</div>}</div>
                 </Form.Group>
 
-                <Form.Group class="form-group">
+                <Form.Group class="form-group Name">
                     <FloatingLabel
                         controlId="formBasicName"
                         label="Name"
@@ -343,7 +343,7 @@ function PersonalInfoForm(props) {
                     <div>{errors.includes("name") && <div id="error">Please fill in your name!</div>}</div>
                 </Form.Group>
 
-                <Form.Group class="form-group">
+                <Form.Group class="form-group Email">
                     <FloatingLabel
                         controlId="formBasicEmail"
                         label="Email address"
