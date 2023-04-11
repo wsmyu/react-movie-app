@@ -32,7 +32,11 @@ function App() {
           setIsViewingMovie={setIsViewingMovie} />} />
         )}
     
-        <Route path="/moviedescription/:imdbID" element={<MovieDescription addToFavorites={addToFavorites} isViewingMovie={isViewingMovie}/>} />
+        <Route path="/moviedescription/:imdbID" element={<MovieDescription 
+        addToFavorites={addToFavorites} 
+        isViewingMovie={isViewingMovie} 
+        setIsViewingMovie={setIsViewingMovie}/>} 
+        />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites}/>} />
 
