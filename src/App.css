@@ -153,4 +153,11 @@ width: 100%;
 .card {
   width: 200px;
   height: 300px;
+  margin-top: 10px;
+}
+.card:hover{
+  transform: scale(1.1);
+}
+.carousel{
+  margin-bottom: 60px;
 }

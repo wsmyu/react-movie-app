@@ -87,6 +87,7 @@ function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
           </button>
 
           <hr />
+          <h2>Audience reviews</h2>
           <div className='reviewDisplay'>
             {reviews.length > 0 ? (
                 reviews.map((review, index) => (
@@ -100,7 +101,7 @@ function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
                 <p>No reviews yet.</p>
               )}
           </div>
-        
+        <br/>
         <h2>Reviews</h2>
         <form onSubmit={handleAddReview}>
           <div>

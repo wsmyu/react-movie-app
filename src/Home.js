@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import CarouselSlide from './CarouselSlide'
+
+
 
 function Home ({isViewingMovie,setIsViewingMovie}) {
   const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=babd534350a103aaf9523014b99d7ede`;
@@ -45,25 +48,28 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
 
 
   return (
+   
     <div className="container">
-    <h1>Trending Movies</h1>
-    <div className="row home-movie-list">
-      {movies.slice(0, 6).map((movie) => (
-        <div className="col-md-2" key={movie.id}>
-          <div className="card" onClick={() => handleMovieClick(movie.id)}>
-            <img
-              className="home-movie-poster"
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <div className="card-body">
-              <h5 className="card-title">{movie.title}</h5>
+       <CarouselSlide  />
+       
+      <h1>Trending Movies</h1>
+      <div className="row home-movie-list">
+        {movies.slice(0, 6).map((movie) => (
+          <div className="col-md-2" key={movie.id}>
+            <div className="card" onClick={() => handleMovieClick(movie.id)}>
+              <img
+                className="home-movie-poster"
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{movie.title}</h5>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
-    <h1>Top Rated Movies</h1>
+        ))}
+      </div>
+      <h1>Top Rated Movies</h1>
       <div className="row home-movie-list">
         {topRatedMovies.slice(0, 6).map((movie) => (
           <div className="col-md-2" key={movie.id}>
