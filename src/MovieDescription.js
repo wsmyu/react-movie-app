@@ -1,8 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
-
+import ReactStars from "react-rating-stars-component";
 
 function MovieDescription({ addToFavorites,isViewingMovie }) {
   const { imdbID } = useParams();
@@ -10,7 +9,11 @@ function MovieDescription({ addToFavorites,isViewingMovie }) {
   const [reviewText, setReviewText] = useState('');
   const [reviews, setReviews] = useState([]);
   const [nameText, setNameText] = useState('');
+  const [rating, setRating] = useState(0);
 
+const handleRatingChange = (newRating) => {
+  setRating(newRating);
+};
   const handleNameChange = (e) => {
     setNameText(e.target.value);
   };
@@ -71,13 +74,11 @@ function MovieDescription({ addToFavorites,isViewingMovie }) {
   
   return (
     <div className='movieDescription'>
+    
       <img src={movie.Poster} />
       <div className='movieDetails'>
         <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
-        <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
-          Add to Favorites
-        </button>
-
+    
         <p>Released Year: {movie.Year}</p>
         <p>Actors: {movie.Actors}</p>
         <p>Director:  {movie.Director}</p>
@@ -86,6 +87,9 @@ function MovieDescription({ addToFavorites,isViewingMovie }) {
         <p>Awards: {movie.Awards}</p>
 
         <p>{movie.Plot}</p>
+        <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
+          Add to Favorites
+        </button>
         
         <hr />
         <div className='reviewDisplay'>
@@ -101,17 +105,19 @@ function MovieDescription({ addToFavorites,isViewingMovie }) {
             <p>No reviews yet.</p>
           )}
       </div>
-
+      
         <h2>Reviews</h2>
         <form onSubmit={handleAddReview}>
          <div>
-              <label htmlFor="nameInput" className="form-label">Name:</label>
+  
               <input 
                 type="text" 
                 className="form-control" 
                 id="nameInput"
                 value={nameText}
-                onChange={handleNameChange} />
+                placeholder='Please Enter Your Name'
+                onChange={handleNameChange}
+                style={{width:"30%"}} />
           </div>
           <div>
             <label htmlFor="reviewInput" className="form-label">Write a review</label>
