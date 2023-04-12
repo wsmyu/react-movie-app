@@ -7,11 +7,14 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Feedback from './Feedback';
 import Favorites from "./Favorites";
+import Login from "./Login";
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [favorites, setFavorites] = useState([]);
   const [isViewingMovie, setIsViewingMovie] = useState(false);
+  const [user, setUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState('');
 
 
   const addToFavorites = (movie) => {
@@ -23,7 +26,7 @@ function App() {
   return (
     <div className="App">
 
-      <Header searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie} />
+      <Header searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie} currentUser={currentUser}/>
       <MovieList searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie}  />
 
       <Routes>
@@ -35,6 +38,7 @@ function App() {
         <Route path="/moviedescription/:imdbID" element={<MovieDescription addToFavorites={addToFavorites} isViewingMovie={isViewingMovie}/>} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites}/>} />
+        <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
 
       </Routes>
 
