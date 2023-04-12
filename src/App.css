@@ -1,16 +1,37 @@
+.App{
+  background-color:#1c1e1f;
+  min-height: 100vh; 
+  min-width: 100vw
+}
 .navbar{
 width: 100%;
 }
-
+p,h2,h1,.form-group{
+  color: white;
+}
+.form-group.Email, .form-group.Name{
+  color:black;
+}
+.form-group ::placeholder{
+  color:black;
+}
+.form-group{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 .home{
   margin-left: 20px;
 }
 
 
-
 .movieList img{
   width:200px;
 }
+
+.movieList img:hover{
+  transform: scale(1.1);
+}
+
 .movieList {
   display: flex;
   flex-wrap: wrap;
@@ -39,14 +60,18 @@ width: 100%;
 .movieDescription{
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-top: 20px;
+  align-items: flex-start; 
+
 }
 
 .movieDescription img{
-  width: auto;
-  height:auto;
+  width: 300px;
+  height:400px;
   max-height: 600px;
+  margin-top: 70px;
+
   
 }
 
@@ -63,7 +88,7 @@ width: 100%;
 
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: #f5f5f5;
+  background-color: #1c1e1f;;
 }
 
 
@@ -75,10 +100,7 @@ width: 100%;
   color:red;
 }
 
-.form-group{
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
+
 
 .favorite-movie {
   display: flex;
@@ -100,9 +122,13 @@ width: 100%;
   font-size: 1.1em;
   font-weight: 500;
 }
-
 .feedbackForm{
-  margin: 40px;
+
+  width: 1000px;
+  height:700px;
+  margin:auto;
+  margin-top:30px;
+ 
 }
 
 .Name,.Email{
@@ -126,4 +152,37 @@ width: 100%;
 .addFavourite{
   width:400px;
 
+}
+
+
+.reviewDisplay {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+ 
+}
+
+.review {
+  background-color: #4d4b52;
+  border-radius: 10px;
+  padding: 20px;
+ 
+}
+
+.review-text {
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  margin-top: 10px;
+}
+.card:hover{
+  transform: scale(1.1);
+}
+.carousel{
+  margin-bottom: 60px;
 }
