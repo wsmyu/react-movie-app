@@ -29,7 +29,7 @@ function Header(props) {
               <Nav.Link className='navLink'>Feedback</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/login">
-              <Nav.Link className='navLink'>{ (props.currentUser==="qwert") ? 'Profile' : 'Log In'}</Nav.Link>
+              <Nav.Link className='navLink'>Account</Nav.Link>
             </LinkContainer>
           </Nav>
           <input value={props.searchValue} placeholder='Search' onChange={handleInputChanges} type="text" />

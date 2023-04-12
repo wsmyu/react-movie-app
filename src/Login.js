@@ -10,8 +10,9 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 
-function Login({user, setUser, currentUser, setCurrentUser}) {
+function Login({ user, setUser, currentUser, setCurrentUser }) {
     const [register, setRegister] = useState(false);
+    const [login, setLogin] = useState(false);
 
     const selectRegister = () => {
         setRegister(true);
@@ -21,20 +22,20 @@ function Login({user, setUser, currentUser, setCurrentUser}) {
         setRegister(false);
     }
 
-    const handleRegistration = () => {
-        setRegister(false);
-    };
-
     const addUser = (user) => {
         setUser((prevUsers) => [...prevUsers, user]);
     }
 
+    const loginAccount = () => {
+        setLogin(true);
+    }
+
     return (
         <div>
-            {!register ? (
-                <LoginPage user={user} selectRegister={selectRegister} currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+            {login ? <Account currentUser={currentUser} /> : !register ? (
+                <LoginPage user={user} selectRegister={selectRegister} currentUser={currentUser} setCurrentUser={setCurrentUser} loginAccount={loginAccount} />
             ) : (
-                <Register selectLogin={selectLogin} handleRegistration={handleRegistration} user={user} setUser={setUser}  addUser={addUser}/>
+                <Register selectLogin={selectLogin} user={user} setUser={setUser} addUser={addUser} />
             )}
         </div>
     );
@@ -61,8 +62,8 @@ function LoginPage(props) {
         if (errorsTemp.length === 0) {
             const matchedUser = props.user.find(u => u.username === usernameInput && u.password === passwordInput);
             if (matchedUser) {
-                alert("Welcome back " + matchedUser.username + " !")
                 props.setCurrentUser(matchedUser.username);
+                props.loginAccount();
 
             } else {
                 alert("Wrong username or password");
@@ -71,33 +72,28 @@ function LoginPage(props) {
     }
 
     return (
-
         <div>
-            {/* <h2>User Information</h2>
-            <ul>
-                {props.user.map((user) => (
-                    <li key={user.username}>{user.fname} {user.lname}, {user.email}, {user.username},{user.password}</li>
-                ))}
-            </ul> */}
             <h2>Log in</h2>
-            <Form.Group as={Row} className="mb-3" controlId="log-in">
+            <Form.Group class="form-group">
                 <Form.Label column sm="1">
                     Username:
                 </Form.Label>
                 <Col sm="2">
                     <Form.Control type="text" placeholder="Username" onChange={(e) => setUsernameInput(e.target.value)} />
                 </Col>
+                {errors.includes("username") && <div id="error">Please enter your username!</div>}
             </Form.Group>
 
-            <Form.Group as={Row} className="mb-3" controlId="log-in">
+            <Form.Group class="form-group">
                 <Form.Label column sm="1">
                     Password:
                 </Form.Label>
                 <Col sm="2">
                     <Form.Control type="password" placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)} />
+                    {errors.includes("password") && <div id="error">Please enter your password!</div>}
                 </Col>
             </Form.Group>
-            <div>Don't have an account? <Button variant="link" onClick={props.selectRegister}>Sign up here</Button></div>
+            <div class="form-group">Don't have an account? <Button variant="link" onClick={props.selectRegister}>Sign up here</Button></div>
             <Button variant="outline-primary" onClick={loginHandler}>
                 LOGIN
             </Button>
@@ -134,86 +130,104 @@ function Register(props) {
 
     return (
         <div>
-            
+
             <Form noValidate validated={validated} onSubmit={registerHandler}>
-                <Form.Group controlId="validationFname">
+                <Form.Group class="form-group" controlId="validationFname">
                     <Form.Label>First name</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="First name"
-                        onChange={(e) => setFname(e.target.value)}
-                    />
-                </Form.Group>
-                <Form.Group controlId="validationLname">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                        required
-                        type="text"
-                        placeholder="Last name"
-                        onChange={(e) => setLname(e.target.value)}
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="validationEmail">
-                    <Form.Label>Email</Form.Label>
-                    <InputGroup hasValidation>
+                    <Col sm="6">
                         <Form.Control
-                            type="email"
-                            placeholder="Email"
                             required
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            placeholder="First name"
+                            onChange={(e) => setFname(e.target.value)}
                         />
-                        <Form.Control.Feedback type="invalid">
-                            Please enter a email.
-                        </Form.Control.Feedback>
-                    </InputGroup>
+                    </Col>
+                </Form.Group>
+                <Form.Group class="form-group" controlId="validationLname">
+                    <Form.Label>Last name</Form.Label>
+                    <Col sm="6">
+                        <Form.Control
+                            required
+                            type="text"
+                            placeholder="Last name"
+                            onChange={(e) => setLname(e.target.value)}
+                        />
+                    </Col>
                 </Form.Group>
 
-                <Form.Group controlId="validationUsername">
+                <Form.Group class="form-group" controlId="validationEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Col sm="6">
+                        <InputGroup hasValidation>
+                            <Form.Control
+                                type="email"
+                                placeholder="Email"
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a email.
+                            </Form.Control.Feedback>
+                        </InputGroup>
+                    </Col>
+                </Form.Group>
+
+                <Form.Group class="form-group" controlId="validationUsername">
                     <Form.Label>Username</Form.Label>
                     <InputGroup hasValidation>
-                        <Form.Control
-                            type="text"
-                            placeholder="Please enter a username with at least 5 characters."
-                            pattern=".{5,}"
-                            required
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Please choose a username.
-                        </Form.Control.Feedback>
-                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        <Col sm="6">
+                            <Form.Control
+                                type="text"
+                                placeholder="Please enter a username with at least 5 characters."
+                                pattern=".{5,}"
+                                required
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Please choose a username.
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        </Col>
                     </InputGroup>
                 </Form.Group>
 
-                <Form.Group controlId="validationPassword">
+                <Form.Group class="form-group" controlId="validationPassword">
                     <Form.Label>Password</Form.Label>
                     <InputGroup hasValidation>
-                        <Form.Control
-                            type="password"
-                            placeholder="Please enter password with at least 8 characters with at least one uppercase, one lower case and one number."
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                            required
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            Please enter a valid password.
-                        </Form.Control.Feedback>
-                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        <Col sm="6">
+                            <Form.Control
+                                type="password"
+                                placeholder="Please enter password with at least 8 characters with at least one uppercase, one lower case and one number."
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                required
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <Form.Control.Feedback type="invalid">
+                                Please enter a valid password.
+                            </Form.Control.Feedback>
+                            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        </Col>
                     </InputGroup>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
+                <Form.Group class="form-group" className="mb-3">
                     <Form.Check
                         required
-                        label="Agree to terms and conditions"
+                        label={<span style={{color: 'white'}}>Agree to terms and conditions</span>}
                         feedback="You must agree before submitting."
                         feedbackType="invalid"
                     />
                 </Form.Group>
                 <Button type="submit">Register</Button>
             </Form>
+        </div>
+    );
+}
+
+function Account(props) {
+    return (
+        <div>
+            <h3>Welcome back {props.currentUser} !</h3>
         </div>
     );
 }
