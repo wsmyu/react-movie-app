@@ -124,6 +124,7 @@ function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
               value={reviewText} 
               onChange={handleReviewChange}/>
           </div>
+          <br/>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
         

@@ -9,16 +9,17 @@ width: 100%;
 p,h2,h1,.form-group{
   color: white;
 }
+
 .form-group.Email, .form-group.Name{
   color:black;
 }
 .form-group ::placeholder{
   color:black;
 }
-.form-group{
+/* .form-group{
   margin-bottom: 20px;
   margin-top: 20px;
-}
+} */
 .home{
   margin-left: 20px;
 }
@@ -30,6 +31,7 @@ p,h2,h1,.form-group{
 
 .movieList img:hover{
   transform: scale(1.1);
+  cursor:pointer;
 }
 
 .movieList {
@@ -123,11 +125,11 @@ p,h2,h1,.form-group{
   font-weight: 500;
 }
 .feedbackForm{
-
   width: 1000px;
   height:700px;
   margin:auto;
   margin-top:30px;
+ 
  
 }
 
@@ -182,7 +184,26 @@ p,h2,h1,.form-group{
 }
 .card:hover{
   transform: scale(1.1);
+  cursor: pointer;
 }
 .carousel{
   margin-bottom: 60px;
 }
+
+.login {
+  margin-top:50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 3.5rem;
+  height: 100%;
+}
+
+.register{
+ margin-left:500px;
+ margin-top: 50px;
+ line-height: 2.5rem;
+
+}
+

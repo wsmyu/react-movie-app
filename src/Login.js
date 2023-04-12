@@ -72,14 +72,14 @@ function LoginPage(props) {
     }
 
     return (
-        <div>
+        <div className='login' >
             <h2>Log in</h2>
             <Form.Group class="form-group">
                 <Form.Label column sm="1">
                     Username:
                 </Form.Label>
                 <Col sm="2">
-                    <Form.Control type="text" placeholder="Username" onChange={(e) => setUsernameInput(e.target.value)} />
+                    <Form.Control style={{minWidth: '200px'}} type="text" placeholder="Username" onChange={(e) => setUsernameInput(e.target.value)} />
                 </Col>
                 {errors.includes("username") && <div id="error">Please enter your username!</div>}
             </Form.Group>
@@ -89,7 +89,7 @@ function LoginPage(props) {
                     Password:
                 </Form.Label>
                 <Col sm="2">
-                    <Form.Control type="password" placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)} />
+                    <Form.Control style={{minWidth: '200px'}} type="password" placeholder="Password" onChange={(e) => setPasswordInput(e.target.value)} />
                     {errors.includes("password") && <div id="error">Please enter your password!</div>}
                 </Col>
             </Form.Group>
@@ -129,7 +129,7 @@ function Register(props) {
     };
 
     return (
-        <div>
+        <div className='register'>
 
             <Form noValidate validated={validated} onSubmit={registerHandler}>
                 <Form.Group class="form-group" controlId="validationFname">
@@ -139,6 +139,7 @@ function Register(props) {
                             required
                             type="text"
                             placeholder="First name"
+                            style={{minWidth: '200px'}}
                             onChange={(e) => setFname(e.target.value)}
                         />
                     </Col>
@@ -150,6 +151,7 @@ function Register(props) {
                             required
                             type="text"
                             placeholder="Last name"
+                            style={{minWidth: '200px'}}
                             onChange={(e) => setLname(e.target.value)}
                         />
                     </Col>
@@ -163,6 +165,7 @@ function Register(props) {
                                 type="email"
                                 placeholder="Email"
                                 required
+                                style={{minWidth: '200px'}}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -181,6 +184,7 @@ function Register(props) {
                                 placeholder="Please enter a username with at least 5 characters."
                                 pattern=".{5,}"
                                 required
+                                style={{minWidth: '400px'}}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
@@ -197,9 +201,10 @@ function Register(props) {
                         <Col sm="6">
                             <Form.Control
                                 type="password"
-                                placeholder="Please enter password with at least 8 characters with at least one uppercase, one lower case and one number."
+                                placeholder="At least 8 characters with at least one uppercase, one lower case and one number."
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 required
+                                style={{minWidth: '600px'}}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <Form.Control.Feedback type="invalid">
