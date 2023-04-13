@@ -31,6 +31,9 @@ function Header(props) {
             <LinkContainer to="/login">
               <Nav.Link className='navLink'>Account</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/Challenge">
+              <Nav.Link className='navLink'>Challenge</Nav.Link>
+            </LinkContainer>
           </Nav>
           <input value={props.searchValue} placeholder='Search' onChange={handleInputChanges} type="text" />
         </Container>

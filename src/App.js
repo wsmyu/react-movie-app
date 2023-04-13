@@ -8,6 +8,7 @@ import Header from './Header';
 import Feedback from './Feedback';
 import Favorites from "./Favorites";
 import Login from "./Login";
+import Challenge from "./Challenge";
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
@@ -43,6 +44,7 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites}/>} />
         <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+        <Route path="/Challenge" element={<Challenge />} />
 
       </Routes>
 

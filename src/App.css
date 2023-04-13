@@ -1,43 +1,51 @@
-.App{
-  background-color:#1c1e1f;
-  min-height: 100vh; 
+.App {
+  background-color: #1c1e1f;
+  min-height: 100vh;
   min-width: 100vw
 }
-.navbar{
-width: 100%;
+
+.navbar {
+  width: 100%;
 }
-p,h2,h1,.form-group{
+
+p,
+h2,
+h1,
+.form-group {
   color: white;
 }
 
-.form-group.Email, .form-group.Name{
-  color:black;
+.form-group.Email,
+.form-group.Name {
+  color: black;
 }
-.form-group ::placeholder{
-  color:black;
+
+.form-group ::placeholder {
+  color: black;
 }
+
 /* .form-group{
   margin-bottom: 20px;
   margin-top: 20px;
 } */
-.home{
+.home {
   margin-left: 20px;
 }
 
 
-.movieList img{
-  width:200px;
+.movieList img {
+  width: 200px;
 }
 
-.movieList img:hover{
+.movieList img:hover {
   transform: scale(1.1);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .movieList {
   display: flex;
   flex-wrap: wrap;
-  justify-content:left;
+  justify-content: left;
 }
 
 .singleMovie {
@@ -46,35 +54,36 @@ p,h2,h1,.form-group{
   text-align: center;
 }
 
-.singleMovie{
-  margin:10px;
+.singleMovie {
+  margin: 10px;
 }
 
-.singleMovie:hover{
+.singleMovie:hover {
   cursor: pointer;
 }
+
 .moviePoster {
   margin-right: 20px;
   width: 200px;
   height: 300px;
 }
 
-.movieDescription{
+.movieDescription {
   display: flex;
   flex-direction: row;
   margin-left: 40px;
   margin-top: 20px;
-  align-items: flex-start; 
+  align-items: flex-start;
 
 }
 
-.movieDescription img{
+.movieDescription img {
   width: 300px;
-  height:400px;
+  height: 400px;
   max-height: 600px;
   margin-top: 70px;
 
-  
+
 }
 
 .movieDetails {
@@ -90,16 +99,17 @@ p,h2,h1,.form-group{
 
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: #1c1e1f;;
+  background-color: #1c1e1f;
+  ;
 }
 
 
-.navLink{
+.navLink {
   margin: 20px;
 }
 
-#error{
-  color:red;
+#error {
+  color: red;
 }
 
 
@@ -124,17 +134,19 @@ p,h2,h1,.form-group{
   font-size: 1.1em;
   font-weight: 500;
 }
-.feedbackForm{
+
+.feedbackForm {
   width: 1000px;
-  height:700px;
-  margin:auto;
-  margin-top:30px;
- 
- 
+  height: 700px;
+  margin: auto;
+  margin-top: 30px;
+
+
 }
 
-.Name,.Email{
- width: 300px;
+.Name,
+.Email {
+  width: 300px;
 }
 
 .favorite-movie span {
@@ -151,8 +163,8 @@ p,h2,h1,.form-group{
   margin-right: 20px;
 }
 
-.addFavourite{
-  width:400px;
+.addFavourite {
+  width: 400px;
 
 }
 
@@ -161,14 +173,14 @@ p,h2,h1,.form-group{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 20px;
- 
+
 }
 
 .review {
   background-color: #4d4b52;
   border-radius: 10px;
   padding: 20px;
- 
+
 }
 
 .review-text {
@@ -182,16 +194,18 @@ p,h2,h1,.form-group{
   height: 300px;
   margin-top: 10px;
 }
-.card:hover{
+
+.card:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
-.carousel{
+
+.carousel {
   margin-bottom: 60px;
 }
 
 .login {
-  margin-top:50px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,10 +214,28 @@ p,h2,h1,.form-group{
   height: 100%;
 }
 
-.register{
- margin-left:500px;
- margin-top: 50px;
- line-height: 2.5rem;
+.register {
+  margin-left: 500px;
+  margin-top: 50px;
+  line-height: 2.5rem;
 
 }
 
+.challenge {
+  color: white;
+  text-align: center;
+}
+
+.answer-section button {
+  width: 50%;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #252d4a;
+  border-radius: 15px;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 5px solid #234668;
+  cursor: pointer;
+  margin: 10px;
+}

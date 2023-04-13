@@ -26,22 +26,17 @@ function Login({ user, setUser, currentUser, setCurrentUser }) {
         setUser((prevUsers) => [...prevUsers, user]);
     }
 
-    const loginAccount = () => {
-        setLogin(true);
-    }
 
     return (
         <div>
-            {login ? <Account currentUser={currentUser} /> : !register ? (
-                <LoginPage user={user} selectRegister={selectRegister} currentUser={currentUser} setCurrentUser={setCurrentUser} loginAccount={loginAccount} />
+            {currentUser ? <Account currentUser={currentUser} /> : !register ? (
+                <LoginPage user={user} selectRegister={selectRegister} currentUser={currentUser} setCurrentUser={setCurrentUser} />
             ) : (
                 <Register selectLogin={selectLogin} user={user} setUser={setUser} addUser={addUser} />
             )}
         </div>
     );
 }
-
-
 
 function LoginPage(props) {
     const [errors, setErrors] = useState([]);
@@ -63,7 +58,6 @@ function LoginPage(props) {
             const matchedUser = props.user.find(u => u.username === usernameInput && u.password === passwordInput);
             if (matchedUser) {
                 props.setCurrentUser(matchedUser.username);
-                props.loginAccount();
 
             } else {
                 alert("Wrong username or password");
