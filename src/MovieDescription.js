@@ -100,6 +100,7 @@ const handleAddResponse = (e, reviewIndex) => {
        <>
        {isViewingMovie ? (
         <div className='movieDescription'>
+          
     <img src={movie.Poster} />
     <div className='movieDetails'>
       <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
@@ -134,7 +135,8 @@ const handleAddResponse = (e, reviewIndex) => {
                 ))}
               </div>
             )}
-            <form style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
+            <form className='response-form'
+                style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
                 onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
               <div>
                 <input 
@@ -144,7 +146,7 @@ const handleAddResponse = (e, reviewIndex) => {
                   value={responseNameText}
                   placeholder='Please Enter Your Name'
                   onChange={handleResponseNameChange}
-                  style={{width:"30%", marginBottom:"1rem"}}
+                  style={{backgroundColor:'#45454b',color: 'white',width:"30%", marginBottom:"1rem"}}
                 />
               </div>
               <div>
@@ -154,6 +156,7 @@ const handleAddResponse = (e, reviewIndex) => {
                   id={`responseInput${reviewIndex}`}
                   rows="2"
                   value={responseText} 
+                  style={{backgroundColor:'#45454b',color: 'white'}}
                   onChange={handleResponseChange}
                 />
               </div>
