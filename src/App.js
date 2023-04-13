@@ -8,6 +8,7 @@ import Header from './Header';
 import Feedback from './Feedback';
 import Favorites from "./Favorites";
 import Login from "./Login";
+import Footer from './Footer';
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
@@ -28,7 +29,7 @@ function App() {
 
       <Header searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie} currentUser={currentUser}/>
       <MovieList searchValue={searchValue} setSearchValue={setSearchValue} setIsViewingMovie={setIsViewingMovie}  />
-
+      
       <Routes>
         {searchValue.length === 0 && (
           <Route path="/" element={<Home setSearchValue={setSearchValue} isViewingMovie={isViewingMovie}
@@ -45,6 +46,7 @@ function App() {
         <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
 
       </Routes>
+      <Footer />
 
 
     </div>

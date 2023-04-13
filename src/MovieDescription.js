@@ -56,6 +56,8 @@ const handleResponseChange = (e) => {
   setResponseText(e.target.value);
 };
 
+
+
 const handleAddResponse = (e, reviewIndex) => {
   e.preventDefault();
   if (responseNameText.trim() !== '' && responseText.trim() !== '') {
@@ -67,7 +69,8 @@ const handleAddResponse = (e, reviewIndex) => {
     }
     const newResponse = {
       name: responseNameText,
-      text: responseText
+      text: responseText,
+      date: new Date().toLocaleDateString(),
     };
     reviewToUpdate.responses.push(newResponse);
     localStorage.setItem(imdbID, JSON.stringify(storedReviews));
@@ -125,6 +128,7 @@ const handleAddResponse = (e, reviewIndex) => {
                   <div className="response" key={responseIndex}>
                     <p className='user-name'>{response.name}</p>
                     <p className="response-text">{response.text}</p>
+                    <p className="response-date">{response.date}</p>
                   </div>
                 ))}
               </div>

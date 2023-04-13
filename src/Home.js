@@ -49,7 +49,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
 
   return (
    
-    <div className="container">
+    <div className="container" style={{marginBottom:'90px'}}>
        <CarouselSlide  />
        
       <h1>Trending Movies</h1>
@@ -69,6 +69,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
           </div>
         ))}
       </div>
+      <br/><br/>
       <h1>Top Rated Movies</h1>
       <div className="row home-movie-list">
         {topRatedMovies.slice(0, 6).map((movie) => (
