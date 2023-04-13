@@ -50,7 +50,7 @@ function App() {
         />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
-        <Route path='/cart' element={<Cart cartItems={cartItems} />} />
+        <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
 
       </Routes>
