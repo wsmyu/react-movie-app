@@ -113,8 +113,9 @@ const handleAddResponse = (e, reviewIndex) => {
         Add to Favorites
       </button>
       <hr />
-      <h2>Audience Reviews</h2>
-    <div className='reviewDisplay'>
+      <div className='reviewDisplay'>
+      <h3 style={{color:'white'}}>Audience Reviews</h3>
+    
       {reviews && reviews.length > 0 ? (
         reviews.map((review, reviewIndex) => (
           <div className="review" key={reviewIndex}>
@@ -165,7 +166,7 @@ const handleAddResponse = (e, reviewIndex) => {
       )}
     </div>
     <br/>
-    <h2>Create Your Own Review</h2>
+    <h3 style={{color:'white'}}>Create Your Own Review</h3>
     <form onSubmit={handleAddReview}>
       <div>
         <input 

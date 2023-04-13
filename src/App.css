@@ -81,7 +81,7 @@ p,h2,h1,.form-group{
   flex-grow: 1;
   margin: 20px 50px;
   padding: 20px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 
@@ -156,6 +156,7 @@ p,h2,h1,.form-group{
 
 .reviewDisplay {
   display:block;
+  margin-top: 50px;
   
  
 }
@@ -171,20 +172,20 @@ p,h2,h1,.form-group{
   margin-left: 1rem;
 }
 
-.review .user-name{
+.review .user-name, .review-date{
   font-weight: 700;
-  font-size: 25px;
+  font-size: 18px;
 }
 .review-text {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.5;
   margin: 0;
   margin-bottom: 1rem;
 }
 
 .card {
-  width: 200px;
-  height: 300px;
+  width: 180px;
+  height: 250px;
   margin-top: 10px;
 }
 .card:hover{
