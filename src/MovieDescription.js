@@ -1,15 +1,16 @@
 import React from 'react';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
+function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsViewingMovie }) {
   const { imdbID } = useParams();
   const [movie, setMovie] = useState('');
   const [reviewText, setReviewText] = useState('');
   const [reviews, setReviews] = useState([]);
-  const [nameText, setNameText] = useState(''); 
+  const [nameText, setNameText] = useState('');
   const [responseText, setResponseText] = useState('');
   const [responseNameText, setResponseNameText] = useState('');
+  const [price, setPrice] = useState(0);
 
 
   const handleNameChange = (e) => {
@@ -29,6 +30,16 @@ function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
     addToFavorites(movieDetails);
   };
 
+  const handleAddToCart = () => {
+    const movieDetails = {
+      title: movie.Title, 
+      imdbID: movie.imdbID,
+      poster: movie.Poster,
+      price
+    };
+    addToCart(movieDetails);
+  };
+
   const handleReviewChange = (e) => {
     setReviewText(e.target.value);
   };
@@ -36,71 +47,71 @@ function MovieDescription({ addToFavorites,isViewingMovie,setIsViewingMovie }) {
   const handleAddReview = (e) => {
     e.preventDefault();
     if (nameText.trim() !== '' && reviewText.trim() !== '') {
-    const newReview = {
-      name: nameText,
-      text: reviewText,
-      date: new Date().toLocaleDateString(),
-      responses: []
-    };
-    const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
-    const newReviews = [...storedReviews, newReview];
-    localStorage.setItem(imdbID, JSON.stringify(newReviews));
-    setReviews(newReviews);
-    setReviewText('');
-    setNameText('');
-  }
+      const newReview = {
+        name: nameText,
+        text: reviewText,
+        date: new Date().toLocaleDateString(),
+        responses: []
+      };
+      const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
+      const newReviews = [...storedReviews, newReview];
+      localStorage.setItem(imdbID, JSON.stringify(newReviews));
+      setReviews(newReviews);
+      setReviewText('');
+      setNameText('');
+    }
   };
 
 
-const handleResponseChange = (e) => {
-  setResponseText(e.target.value);
-};
+  const handleResponseChange = (e) => {
+    setResponseText(e.target.value);
+  };
 
 
 
-const handleAddResponse = (e, reviewIndex) => {
-  e.preventDefault();
-  if (responseNameText.trim() !== '' && responseText.trim() !== '') {
-    const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
-    const reviewToUpdate = storedReviews[reviewIndex];
-  
-    if (!reviewToUpdate.responses) {
-      reviewToUpdate.responses = [];
-    }
-    const newResponse = {
-      name: responseNameText,
-      text: responseText,
+  const handleAddResponse = (e, reviewIndex) => {
+    e.preventDefault();
+    if (responseNameText.trim() !== '' && responseText.trim() !== '') {
+      const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
+      const reviewToUpdate = storedReviews[reviewIndex];
+
+      if (!reviewToUpdate.responses) {
+        reviewToUpdate.responses = [];
+      }
+      const newResponse = {
+        name: responseNameText,
+        text: responseText,
       date: new Date().toLocaleDateString(),
-    };
-    reviewToUpdate.responses.push(newResponse);
-    localStorage.setItem(imdbID, JSON.stringify(storedReviews));
-    setReviews(storedReviews);
-    setResponseText('');
-    setResponseNameText('');
-  }
-};
+      };
+      reviewToUpdate.responses.push(newResponse);
+      localStorage.setItem(imdbID, JSON.stringify(storedReviews));
+      setReviews(storedReviews);
+      setResponseText('');
+      setResponseNameText('');
+    }
+  };
   useEffect(() => {
     const storedReviews = JSON.parse(localStorage.getItem(imdbID));
     if (storedReviews) {
       setReviews(storedReviews);
     }
-  
+
     if (isViewingMovie) {
       const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=41f83b90&plot=full`;
       fetch(url)
         .then(response => response.json())
         .then(json => {
           setMovie(json);
+          setPrice(Math.floor(Math.random() * 10) + 5); // generate a random price between $5 and $14
         })
         .catch(error => console.log(error));
     }
   }, [imdbID, isViewingMovie]);
-  
-      return (
-       <>
-       {isViewingMovie ? (
+
+  return (
+    <>
+      {isViewingMovie ? (
         <div className='movieDescription'>
-          
     <img src={movie.Poster} />
     <div className='movieDetails'>
       <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
@@ -117,26 +128,25 @@ const handleAddResponse = (e, reviewIndex) => {
       <div className='reviewDisplay'>
       <h3 style={{color:'white'}}>Audience Reviews</h3>
     
-      {reviews && reviews.length > 0 ? (
-        reviews.map((review, reviewIndex) => (
-          <div className="review" key={reviewIndex}>
-            <p className='user-name'>{review.name}</p>
-            <p className="review-text">{review.text}</p>
-            <p className="review-date">{review.date}</p>
-            {review.responses && review.responses.length > 0 && (
-              <div className="responses">
-                <h4 style={{color:"#919194",textAlign:"center"}}>Replies</h4>
-                {review.responses.map((response, responseIndex) => (
-                  <div className="response" key={responseIndex}>
-                    <p className='user-name'>{response.name}</p>
-                    <p className="response-text">{response.text}</p>
+              {reviews && reviews.length > 0 ? (
+                reviews.map((review, reviewIndex) => (
+                  <div className="review" key={reviewIndex}>
+                    <p className='user-name'>{review.name}</p>
+                    <p className="review-text">{review.text}</p>
+                    <p className="review-date">{review.date}</p>
+                    {review.responses && review.responses.length > 0 && (
+                      <div className="responses">
+                        <h4 style={{ color: "#919194", textAlign: "center" }}>Replies</h4>
+                        {review.responses.map((response, responseIndex) => (
+                          <div className="response" key={responseIndex}>
+                            <p className='user-name'>{response.name}</p>
+                            <p className="response-text">{response.text}</p>
                     <p className="response-date">{response.date}</p>
                   </div>
                 ))}
               </div>
             )}
-            <form className='response-form'
-                style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
+            <form style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
                 onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
               <div>
                 <input 
@@ -146,7 +156,7 @@ const handleAddResponse = (e, reviewIndex) => {
                   value={responseNameText}
                   placeholder='Please Enter Your Name'
                   onChange={handleResponseNameChange}
-                  style={{backgroundColor:'#45454b',color: 'white',width:"30%", marginBottom:"1rem"}}
+                  style={{width:"30%", marginBottom:"1rem"}}
                 />
               </div>
               <div>
@@ -156,7 +166,6 @@ const handleAddResponse = (e, reviewIndex) => {
                   id={`responseInput${reviewIndex}`}
                   rows="2"
                   value={responseText} 
-                  style={{backgroundColor:'#45454b',color: 'white'}}
                   onChange={handleResponseChange}
                 />
               </div>
@@ -203,7 +212,7 @@ const handleAddResponse = (e, reviewIndex) => {
  
        ) :null}
 
-</>
+    </>
   );
 }
 export default MovieDescription;

@@ -9,20 +9,26 @@ import Feedback from './Feedback';
 import Favorites from "./Favorites";
 import Login from "./Login";
 import Footer from './Footer';
+import Cart from './Cart';
+
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [isViewingMovie, setIsViewingMovie] = useState(false);
   const [user, setUser] = useState([]);
   const [currentUser, setCurrentUser] = useState('');
 
-
-  const addToFavorites = (movie) => {
-    setFavorites((prevFavorites) => [...prevFavorites, movie]);
+  const addToCart = (newMovies) => {
+    setCartItems((prevItems) => [...prevItems, newMovies]);
   };
 
- 
+  const addToFavorites = (newMovies) => {
+    setFavorites((prevFavorites) => [...prevFavorites, newMovies]);
+  };
+
+
 
   return (
     <div className="App">
@@ -33,17 +39,19 @@ function App() {
       <Routes>
         {searchValue.length === 0 && (
           <Route path="/" element={<Home setSearchValue={setSearchValue} isViewingMovie={isViewingMovie}
-          setIsViewingMovie={setIsViewingMovie} />} />
+            setIsViewingMovie={setIsViewingMovie} />} />
         )}
-    
-        <Route path="/moviedescription/:imdbID" element={<MovieDescription 
-        addToFavorites={addToFavorites} 
-        isViewingMovie={isViewingMovie} 
-        setIsViewingMovie={setIsViewingMovie}/>} 
+
+        <Route path="/moviedescription/:imdbID" element={<MovieDescription
+          addToFavorites={addToFavorites}
+          addToCart={addToCart}
+          isViewingMovie={isViewingMovie}
+          setIsViewingMovie={setIsViewingMovie} />}
         />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites}/>} />
-        <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
+        <Route path='/cart' element={<Cart cartItems={cartItems} />} />
+        <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
 
       </Routes>
       <Footer />
