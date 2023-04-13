@@ -28,6 +28,9 @@ function Header(props) {
             <LinkContainer to="/cart">
               <Nav.Link className='navLink'>Cart</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/comparison">
+              <Nav.Link className='navLink'>Price Comparison</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/feedback">
               <Nav.Link className='navLink'>Feedback</Nav.Link>
             </LinkContainer>

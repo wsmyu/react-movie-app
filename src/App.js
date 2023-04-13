@@ -10,6 +10,7 @@ import Favorites from "./Favorites";
 import Login from "./Login";
 import Footer from './Footer';
 import Cart from './Cart';
+import PriceComparison from './PriceComparison';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} setFavorites={setFavorites} />} />
         <Route path='/cart' element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route path='/comparison' element={<PriceComparison cartItems={cartItems}  />} />
         <Route path="/login" element={<Login user={user} setUser={setUser} currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
 
       </Routes>
