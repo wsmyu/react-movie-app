@@ -160,7 +160,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                           value={responseNameText}
                           placeholder='Please Enter Your Name'
                           onChange={handleResponseNameChange}
-                          style={{ width: "30%", marginBottom: "1rem" }}
+                          style={{ width: "30%", marginBottom: "1rem" ,backgroundColor:'#45454b',color: 'white'}}
                         />
                       </div>
                       <div>
@@ -170,6 +170,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                           id={`responseInput${reviewIndex}`}
                           rows="2"
                           value={responseText}
+                          style={{backgroundColor:'#45454b',color: 'white'}}
                           onChange={handleResponseChange}
                         />
                       </div>
@@ -203,6 +204,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                   id={`responseInput${reviews.length}`}
                   rows="3"
                   value={reviewText}
+    
                   onChange={handleReviewChange}
                 />
               </div>
