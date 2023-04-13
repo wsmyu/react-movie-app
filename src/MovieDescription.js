@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -107,11 +109,12 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
         .catch(error => console.log(error));
     }
   }, [imdbID, isViewingMovie]);
-
+ 
   return (
     <>
       {isViewingMovie ? (
         <div className='movieDescription'>
+         
           <img src={movie.Poster} />
           <div className='movieDetails'>
             <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>

@@ -248,6 +248,7 @@ h3,
 .challenge {
   color: white;
   text-align: center;
+  min-height: 100vh;
 }
 
 .answer-section button {
@@ -301,6 +302,7 @@ h3,
 
 
 .cart-container {
+  min-height: 100vh;
   padding: 20px;
   background-color: rgb;
   border: 1px solid #ccc;
@@ -374,4 +376,9 @@ h3,
   color: white;
   text-align: center;
   line-height: 1.5;
+}
+
+.price-comparison{
+  min-height: 100vh;
+  color:white;
 }
