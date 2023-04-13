@@ -120,7 +120,7 @@ const handleAddResponse = (e, reviewIndex) => {
             <p className="review-date">{review.date}</p>
             {review.responses && review.responses.length > 0 && (
               <div className="responses">
-                <h4 style={{color:"#2e303b"}}>Replies:</h4>
+                <h4 style={{color:"#919194",textAlign:"center"}}>Replies</h4>
                 {review.responses.map((response, responseIndex) => (
                   <div className="response" key={responseIndex}>
                     <p className='user-name'>{response.name}</p>
@@ -129,7 +129,7 @@ const handleAddResponse = (e, reviewIndex) => {
                 ))}
               </div>
             )}
-            <form style={{marginTop:"20px",marginLeft:"30px",marginRight:"20px"}} 
+            <form style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
                 onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
               <div>
                 <input 
