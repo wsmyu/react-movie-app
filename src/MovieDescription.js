@@ -32,7 +32,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
 
   const handleAddToCart = () => {
     const movieDetails = {
-      title: movie.Title, 
+      title: movie.Title,
       imdbID: movie.imdbID,
       poster: movie.Poster,
       price
@@ -81,7 +81,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       const newResponse = {
         name: responseNameText,
         text: responseText,
-      date: new Date().toLocaleDateString(),
+        date: new Date().toLocaleDateString(),
       };
       reviewToUpdate.responses.push(newResponse);
       localStorage.setItem(imdbID, JSON.stringify(storedReviews));
@@ -112,22 +112,26 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
     <>
       {isViewingMovie ? (
         <div className='movieDescription'>
-    <img src={movie.Poster} />
-    <div className='movieDetails'>
-      <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
-      <p>Released Year: {movie.Year}</p>
-      <p>Actors: {movie.Actors}</p>
-      <p>Director:  {movie.Director}</p>
-      <p>Genre: {movie.Genre}</p>
-      <p>Awards: {movie.Awards}</p>
-      <p>{movie.Plot}</p>
-      <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
-        Add to Favorites
-      </button>
-      <hr />
-      <div className='reviewDisplay'>
-      <h3 style={{color:'white'}}>Audience Reviews</h3>
-    
+          <img src={movie.Poster} />
+          <div className='movieDetails'>
+            <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
+            <p>Released Year: {movie.Year}</p>
+            <p>Actors: {movie.Actors}</p>
+            <p>Director:  {movie.Director}</p>
+            <p>Genre: {movie.Genre}</p>
+            <p>Awards: {movie.Awards}</p>
+            <p>{movie.Plot}</p>
+            <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
+              Add to Favorites
+            </button>
+            <button className='btn btn-outline-primary addCart' onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+
+            <hr />
+            <div className='reviewDisplay'>
+              <h3 style={{ color: 'white' }}>Audience Reviews</h3>
+
               {reviews && reviews.length > 0 ? (
                 reviews.map((review, reviewIndex) => (
                   <div className="review" key={reviewIndex}>
@@ -141,76 +145,76 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                           <div className="response" key={responseIndex}>
                             <p className='user-name'>{response.name}</p>
                             <p className="response-text">{response.text}</p>
-                    <p className="response-date">{response.date}</p>
+                            <p className="response-date">{response.date}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <form style={{ marginTop: "20px", marginLeft: "3rem", marginRight: "20px" }}
+                      onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
+                      <div>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id={`responseName${reviewIndex}`}
+                          value={responseNameText}
+                          placeholder='Please Enter Your Name'
+                          onChange={handleResponseNameChange}
+                          style={{ width: "30%", marginBottom: "1rem" }}
+                        />
+                      </div>
+                      <div>
+                        <textarea
+                          className="form-control"
+                          placeholder='Join the discussion!'
+                          id={`responseInput${reviewIndex}`}
+                          rows="2"
+                          value={responseText}
+                          onChange={handleResponseChange}
+                        />
+                      </div>
+                      <button style={{ marginTop: '10px' }} type="submit" className="btn btn-primary">Submit</button>
+                    </form>
                   </div>
-                ))}
-              </div>
-            )}
-            <form style={{marginTop:"20px",marginLeft:"3rem",marginRight:"20px"}} 
-                onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
+                ))
+              ) : (
+                <p>No reviews yet.</p>
+              )}
+            </div>
+            <br />
+            <h3 style={{ color: 'white' }}>Create Your Own Review</h3>
+            <form onSubmit={handleAddReview}>
               <div>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  id={`responseName${reviewIndex}`}
-                  value={responseNameText}
+                <input
+                  type="text"
+                  className="form-control"
+                  id={`responseName${reviews.length}`}
+                  value={nameText}
                   placeholder='Please Enter Your Name'
-                  onChange={handleResponseNameChange}
-                  style={{width:"30%", marginBottom:"1rem"}}
+                  onChange={handleNameChange}
+                  style={{ width: "30%" }}
                 />
               </div>
               <div>
-                <textarea 
-                  className="form-control" 
-                  placeholder='Join the discussion!'
-                  id={`responseInput${reviewIndex}`}
-                  rows="2"
-                  value={responseText} 
-                  onChange={handleResponseChange}
+                <label htmlFor="reviewInput" className="form-label">Write a review</label>
+                <textarea
+                  className="form-control"
+                  placeholder='Write some reviews'
+                  id={`responseInput${reviews.length}`}
+                  rows="3"
+                  value={reviewText}
+                  onChange={handleReviewChange}
                 />
               </div>
-              <button style={{marginTop:'10px'}} type="submit" className="btn btn-primary">Submit</button>
+
+              <button style={{ marginTop: '10px' }} type="submit" className="btn btn-primary">Submit</button>
             </form>
+
           </div>
-        ))
-      ) : (
-        <p>No reviews yet.</p>
-      )}
-    </div>
-    <br/>
-    <h3 style={{color:'white'}}>Create Your Own Review</h3>
-    <form onSubmit={handleAddReview}>
-      <div>
-        <input 
-          type="text" 
-          className="form-control" 
-          id={`responseName${reviews.length}`}
-          value={nameText}
-          placeholder='Please Enter Your Name'
-          onChange={handleNameChange}
-          style={{width:"30%"}} 
-        />
-      </div>
-      <div>
-        <label htmlFor="reviewInput" className="form-label">Write a review</label>
-        <textarea 
-          className="form-control" 
-          placeholder='Write some reviews'
-          id={`responseInput${reviews.length}`}  
-          rows="3" 
-          value={reviewText} 
-          onChange={handleReviewChange}
-        />
-      </div>
-          
-          <button style={{marginTop:'10px'}}type="submit" className="btn btn-primary">Submit</button>
-        </form>
-        
-      </div>
-      
-    </div>
- 
-       ) :null}
+
+        </div>
+
+      ) : null}
 
     </>
   );
