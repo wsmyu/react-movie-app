@@ -35,6 +35,7 @@ p,h2,h1,.form-group{
   display: flex;
   flex-wrap: wrap;
   justify-content:left;
+  margin-bottom: 60px;
 }
 
 .singleMovie {
@@ -80,7 +81,7 @@ p,h2,h1,.form-group{
   flex-grow: 1;
   margin: 20px 50px;
   padding: 20px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 
@@ -99,8 +100,6 @@ p,h2,h1,.form-group{
   color:red;
 }
 
-
-
 .favorite-movie {
   display: flex;
   align-items: center;
@@ -109,6 +108,7 @@ p,h2,h1,.form-group{
   border-radius: 5px;
   margin-bottom: 10px;
   padding: 10px;
+ 
 }
 
 .favorite-movie img {
@@ -156,6 +156,7 @@ p,h2,h1,.form-group{
 
 .reviewDisplay {
   display:block;
+  margin-top: 50px;
   
  
 }
@@ -171,20 +172,20 @@ p,h2,h1,.form-group{
   margin-left: 1rem;
 }
 
-.review .user-name{
+.review .user-name, .review-date{
   font-weight: 700;
-  font-size: 25px;
+  font-size: 18px;
 }
 .review-text {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.5;
   margin: 0;
   margin-bottom: 1rem;
 }
 
 .card {
-  width: 200px;
-  height: 300px;
+  width: 180px;
+  height: 250px;
   margin-top: 10px;
 }
 .card:hover{
@@ -196,6 +197,7 @@ p,h2,h1,.form-group{
 }
 
 .login {
+  min-height: 100vh;
   margin-top:50px;
   display: flex;
   flex-direction: column;
@@ -228,11 +230,24 @@ p,h2,h1,.form-group{
   color: rgb(57, 53, 53);
 }
 
-.response .response-text {
+.response, .response-text, .response-date  {
   margin-bottom: 0.5rem;
   color: rgb(57, 53, 53);
   font-weight: 500;
 }
+
+
+.footer {
+
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  }
+
+
 
 .cart-container {
   padding: 20px;

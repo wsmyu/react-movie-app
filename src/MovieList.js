@@ -35,18 +35,20 @@ function MovieList ({searchValue,setSearchValue,setIsViewingMovie})  {
   };
 
   return (
-    <div className="movieList">
-      {movies &&
-        movies.map((movie) => (
-          <div className="singleMovie" key={movie.imdbID}>
-            <img
-              onClick={() =>  handleMovieClick(movie)}
-              src={movie.Poster}
-              alt={movie.Title}
-            />
-            <p style={{marginTop:"10px",fontSize:"18px"}}>{movie.Title}</p>
-          </div>
-        ))}
+    <div>
+      <div className="movieList">
+        {movies &&
+          movies.map((movie) => (
+            <div className="singleMovie" key={movie.imdbID}>
+              <img
+                onClick={() =>  handleMovieClick(movie)}
+                src={movie.Poster}
+                alt={movie.Title}
+              />
+              <p style={{marginTop:"10px",fontSize:"18px"}}>{movie.Title}</p>
+            </div>
+          ))}
+    </div>
     </div>
   );
 };

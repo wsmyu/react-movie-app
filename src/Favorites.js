@@ -8,7 +8,7 @@ function Favorites(props) {
     };
 
     return (
-        <div>
+        <div style={{ minHeight: 'calc(100vh - 200px)'}}>
             {/*Map the movie name and rating as the list */}
             <div className="focusText">
                 {props.favorites.map((movie, index) => (
@@ -27,7 +27,7 @@ export default Favorites
 
 function FavoriteMovie({ movie }) {
     return (
-        <div className="favorite-movie">
+        <div className="favorite-movie" >
             <span>
                 <Link to={`/moviedescription/${movie.imdbID}`}>
                     <img src={movie.poster} alt={movie.title} />

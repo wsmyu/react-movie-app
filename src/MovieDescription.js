@@ -67,6 +67,8 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
     setResponseText(e.target.value);
   };
 
+
+
   const handleAddResponse = (e, reviewIndex) => {
     e.preventDefault();
     if (responseNameText.trim() !== '' && responseText.trim() !== '') {
@@ -78,7 +80,8 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       }
       const newResponse = {
         name: responseNameText,
-        text: responseText
+        text: responseText,
+      date: new Date().toLocaleDateString(),
       };
       reviewToUpdate.responses.push(newResponse);
       localStorage.setItem(imdbID, JSON.stringify(storedReviews));
@@ -126,8 +129,9 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
               Add to Cart
             </button>
             <hr />
-            <h2>Audience Reviews</h2>
-            <div className='reviewDisplay'>
+                    <div className='reviewDisplay'>
+      <h3 style={{color:'white'}}>Audience Reviews</h3>
+    
               {reviews && reviews.length > 0 ? (
                 reviews.map((review, reviewIndex) => (
                   <div className="review" key={reviewIndex}>
@@ -141,6 +145,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                           <div className="response" key={responseIndex}>
                             <p className='user-name'>{response.name}</p>
                             <p className="response-text">{response.text}</p>
+                    <p className="response-date">{response.date}</p>
                           </div>
                         ))}
                       </div>
@@ -177,7 +182,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
               )}
             </div>
             <br />
-            <h2>Create Your Own Review</h2>
+            <h3 style={{color:'white'}}>Create Your Own Review</h3>
             <form onSubmit={handleAddReview}>
               <div>
                 <input
