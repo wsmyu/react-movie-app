@@ -20,7 +20,7 @@ function Header(props) {
     <div className='navbar'>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Link to="/" className="navbar-brand" onClick={handleLogoClick}>Movie Purchasing App</Link>
+          <Link to="/" className="navbar-brand" onClick={handleLogoClick}>MovieMax</Link>
           <Nav className='me-auto'>
             <LinkContainer to="/favorites">
               <Nav.Link className='navLink'>Favourites</Nav.Link>
