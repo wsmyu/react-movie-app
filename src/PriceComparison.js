@@ -1,7 +1,6 @@
 import React from 'react';
 import netflixLogo from './images/Netflix.png';
 import disneypluslogo from './images/Disney.png';
-import buyonAmazon from './images/amazon.png';
 
 
 function PriceComparison(props) {
@@ -25,7 +24,7 @@ function PriceComparison(props) {
         let total = 0;
         cartItems.forEach((item, index) => {
             if (platform.available[index]) {
-                total = platform.price;
+                total = platform.price *12;
             }
         });
         return total.toFixed(2);
@@ -39,9 +38,9 @@ function PriceComparison(props) {
                     <tr>
                         <th></th>
                         <th>Movie</th>
-                        <th><img className="amazonlogo" src={buyonAmazon} />  </th>
-                        <th><img className="logo" src={netflixLogo} /> </th>
-                        <th><img className="logo" src={disneypluslogo} /> </th>
+                        <th>Buy it Now!  </th>
+                        <th><img className="logo" src={netflixLogo} alt="Netflix" /> Price per year</th>
+                        <th><img className="logo" src={disneypluslogo} alt="Netflix"/> Price per year</th>
                     </tr>
                 </thead>
                 <tbody>

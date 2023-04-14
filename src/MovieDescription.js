@@ -104,7 +104,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
         .then(response => response.json())
         .then(json => {
           setMovie(json);
-          setPrice(Math.floor(Math.random() * 10) + 9.99); // generate a random price between $9.99 and $19.99
+          setPrice(Math.floor(Math.random() * 10) + 3); // generate a random price between $ 3 and $13
         })
         .catch(error => console.log(error));
     }
@@ -115,7 +115,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       {isViewingMovie ? (
         <div className='movieDescription'>
          
-          <img src={movie.Poster} />
+          <img src={movie.Poster} alt={movie.title}/>
           <div className='movieDetails'>
             <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
             <p>Released Year: {movie.Year}</p>
