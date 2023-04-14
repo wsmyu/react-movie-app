@@ -403,6 +403,10 @@ h3,
   width: 30%;
 }
 
+.price-comparison h2 {
+  padding:  20px;
+}
+
 .price-comparison .amazonlogo {
   width: 50%;
 }

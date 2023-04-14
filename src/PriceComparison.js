@@ -32,7 +32,7 @@ function PriceComparison(props) {
 
     return (
         <div className="price-comparison">
-            <h2>Price Comparison</h2>
+            <h2> Price Comparison</h2>
             <table>
                 <thead>
                     <tr>
