@@ -55,19 +55,22 @@ function Cart(props) {
                             <p>${calculateTotalWithTax()}</p>
                         </div>
                     </div>
-                    {isOrderPlaced ? (
-                        <p>Your order has been placed. Please check your email.</p>
-                    ) : (
-                        <div className="cart-buttons-container">
-                            <button className="btn btn-success" onClick={placeOrder}>
-                                Place Order
-                            </button>
-                            <button className="btn btn-danger" onClick={clearCart}>
-                                Clear Cart
-                            </button>
 
-                        </div>
-                    )}
+                </div>
+
+            )}
+
+            {isOrderPlaced ? (
+                <p>Your order has been placed. Please check your email.</p>
+            ) : (
+                <div className="cart-buttons-container">
+                    <button className="btn btn-success" onClick={placeOrder}>
+                        Place Order
+                    </button>
+                    <button className="btn btn-danger" onClick={clearCart}>
+                        Clear Cart
+                    </button>
+
                 </div>
             )}
             <Link to="/" className="cart-continue-shopping">

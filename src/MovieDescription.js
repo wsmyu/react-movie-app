@@ -104,7 +104,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
         .then(response => response.json())
         .then(json => {
           setMovie(json);
-          setPrice(Math.floor(Math.random() * 10) + 5); // generate a random price between $5 and $14
+          setPrice(Math.floor(Math.random() * 10) + 9.99); // generate a random price between $9.99 and $19.99
         })
         .catch(error => console.log(error));
     }
@@ -123,6 +123,8 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
             <p>Director:  {movie.Director}</p>
             <p>Genre: {movie.Genre}</p>
             <p>Awards: {movie.Awards}</p>
+            <p>Price on Amazon: {price.toFixed(2)}</p>
+
             <p>{movie.Plot}</p>
             <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
               Add to Favorites

@@ -21,7 +21,7 @@ function PriceComparison(props) {
     let total = 0;
     cartItems.forEach((item, index) => {
       if (platform.available[index]) {
-        total += platform.price;
+        total = platform.price;
       }
     });
     return total.toFixed(2);
@@ -33,6 +33,7 @@ function PriceComparison(props) {
       <table>
         <thead>
           <tr>
+            <th></th>
             <th>Movie</th>
             <th>Price</th>
             <th>Netflix</th>
@@ -42,16 +43,15 @@ function PriceComparison(props) {
         <tbody>
           {cartItems.map((item, index) => (
             <tr key={item.id}>
-              <td>
-                <img src={item.poster} alt={item.title} />
-                {item.title}
-              </td>
+              <td><img src={item.poster} alt={item.title} /></td>
+              <td>{item.title}</td>
               <td>${item.price.toFixed(2)}</td>
               <td>{platforms[0].available[index] ? <span>&#10003;</span> : <span>&#10005;</span>}</td>
               <td>{platforms[1].available[index] ? <span>&#10003;</span> : <span>&#10005;</span>}</td>
             </tr>
           ))}
-          <tr>
+          <tr className="totals-row">
+            <td></td>
             <td>Total</td>
             <td>${calculateCartTotal()}</td>
             <td>${calculatePlatformTotal(platforms[0])}</td>
