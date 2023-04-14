@@ -388,7 +388,7 @@ h3,
 }
 
 .price-comparison {
-  margin-top: 30px;
+  margin-top: 30  px;
 }
 
 .price-comparison img {
@@ -397,10 +397,20 @@ h3,
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-.price-comparison table {
-  width: 100%;
-  border-collapse: collapse;
+
+.price-comparison .logo {
+  width: 30%;
 }
+
+.price-comparison .amazonlogo {
+  width: 50%;
+}
+
+.price-comparison table {
+  table-layout: fixed;
+}
+
+
 
 .price-comparison table th,
 .price-comparison table td {
@@ -420,11 +430,25 @@ h3,
 }
 
 .price-comparison table tbody tr td:first-child {
-  width: 100px;
+  width: 20%;
 }
 
 .price-comparison table tbody tr td:nth-child(2) {
-  width: 300px;
+  width: 20%;
+}
+.price-comparison table th:nth-child(3),
+.price-comparison table td:nth-child(3) {
+  width: 20%; 
+}
+
+.price-comparison table th:nth-child(4),
+.price-comparison table td:nth-child(4) {
+  width: 20%; 
+}
+
+.price-comparison table th:nth-child(5),
+.price-comparison table td:nth-child(5) {
+  width: 20%; 
 }
 
 .price-comparison table tbody tr.totals-row td {
