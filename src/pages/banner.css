@@ -2,12 +2,10 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 0 100px;
     overflow: hidden;
     transition: 0.5s;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .banner::after{
@@ -23,17 +21,16 @@
 }
 
 .banner .movie{
-    padding: 0 100px;
+    padding: 4rem;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    padding-bottom: 100px;
 
 }
 
@@ -57,4 +54,6 @@
     opacity: 1;
 }
 
-
+.movie-carousel-container{
+    padding-top: 5rem;
+}

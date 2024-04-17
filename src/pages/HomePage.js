@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Banner from "./Banner";
 
 
-function Home ({isViewingMovie,setIsViewingMovie}) {
-  const apiKey = process.env._API_KEY;
+function HomePage ({setIsViewingMovie}) {
+  const apiKey = process.env.REACT_APP_API_KEY;
   const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
   const topRatedUrl =
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
@@ -13,25 +13,25 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
   const navigate = useNavigate();
  
   
-  useEffect(() => {
-    fetch(trendingUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setMovies(data.results.slice(0, 8));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  // useEffect(() => {
+  //   fetch(trendingUrl)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMovies(data.results.slice(0, 8));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
 
-    fetch(topRatedUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setTopRatedMovies(data.results.slice(0, 8));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  //   fetch(topRatedUrl)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setTopRatedMovies(data.results.slice(0, 8));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   const handleMovieClick = (id) => {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
@@ -40,7 +40,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
       .then((response) => response.json())
       .then((data) => {
         setIsViewingMovie(true);
-        navigate(`/moviedescription/${data.imdb_id}`);
+        navigate(`/movie-description/${data.imdb_id}`);
       })
       .catch((error) => {
         console.log(error);
@@ -51,7 +51,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
   return (
   
     <div className="home-page">
-     
+      <Banner />
       {/* <h3>Trending Movies</h3>
       <div className="row home-movie-list">
         {movies.slice(0, 6).map((movie) => (
@@ -95,4 +95,4 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
 };
 
 
-export default Home;
+export default HomePage;

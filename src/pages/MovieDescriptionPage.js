@@ -1,19 +1,19 @@
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-
-function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsViewingMovie }) {
+function MovieDescription({
+  addToFavorites,
+  isViewingMovie,
+  setIsViewingMovie,
+}) {
   const { imdbID } = useParams();
-  const [movie, setMovie] = useState('');
-  const [reviewText, setReviewText] = useState('');
+  const [movie, setMovie] = useState("");
+  const [reviewText, setReviewText] = useState("");
   const [reviews, setReviews] = useState([]);
-  const [nameText, setNameText] = useState('');
-  const [responseText, setResponseText] = useState('');
-  const [responseNameText, setResponseNameText] = useState('');
-  const [price, setPrice] = useState(0);
-
+  const [nameText, setNameText] = useState("");
+  const [responseText, setResponseText] = useState("");
+  const [responseNameText, setResponseNameText] = useState("");
 
   const handleNameChange = (e) => {
     setNameText(e.target.value);
@@ -27,19 +27,8 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       imdbID: movie.imdbID,
       rating: movie.imdbRating,
       poster: movie.Poster,
-
     };
     addToFavorites(movieDetails);
-  };
-
-  const handleAddToCart = () => {
-    const movieDetails = {
-      title: movie.Title,
-      imdbID: movie.imdbID,
-      poster: movie.Poster,
-      price
-    };
-    addToCart(movieDetails);
   };
 
   const handleReviewChange = (e) => {
@@ -48,32 +37,29 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
 
   const handleAddReview = (e) => {
     e.preventDefault();
-    if (nameText.trim() !== '' && reviewText.trim() !== '') {
+    if (nameText.trim() !== "" && reviewText.trim() !== "") {
       const newReview = {
         name: nameText,
         text: reviewText,
         date: new Date().toLocaleDateString(),
-        responses: []
+        responses: [],
       };
       const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
       const newReviews = [...storedReviews, newReview];
       localStorage.setItem(imdbID, JSON.stringify(newReviews));
       setReviews(newReviews);
-      setReviewText('');
-      setNameText('');
+      setReviewText("");
+      setNameText("");
     }
   };
-
 
   const handleResponseChange = (e) => {
     setResponseText(e.target.value);
   };
 
-
-
   const handleAddResponse = (e, reviewIndex) => {
     e.preventDefault();
-    if (responseNameText.trim() !== '' && responseText.trim() !== '') {
+    if (responseNameText.trim() !== "" && responseText.trim() !== "") {
       const storedReviews = JSON.parse(localStorage.getItem(imdbID)) || [];
       const reviewToUpdate = storedReviews[reviewIndex];
 
@@ -88,8 +74,8 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       reviewToUpdate.responses.push(newResponse);
       localStorage.setItem(imdbID, JSON.stringify(storedReviews));
       setReviews(storedReviews);
-      setResponseText('');
-      setResponseNameText('');
+      setResponseText("");
+      setResponseNameText("");
     }
   };
   useEffect(() => {
@@ -98,88 +84,103 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
       setReviews(storedReviews);
     }
 
-    if (isViewingMovie) {
+    // if (isViewingMovie) {
       const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=41f83b90&plot=full`;
       fetch(url)
-        .then(response => response.json())
-        .then(json => {
+        .then((response) => response.json())
+        .then((json) => {
           setMovie(json);
-          setPrice(Math.floor(Math.random() * 10) + 7.99); // generate a random price between $ 7.99 and $13
+        
         })
-        .catch(error => console.log(error));
-    }
+        .catch((error) => console.log(error));
+    // }
   }, [imdbID, isViewingMovie]);
- 
+
   return (
     <>
-      {isViewingMovie ? (
-        <div className='movieDescription'>
-         
-          <img src={movie.Poster} alt={movie.title}/>
-          <div className='movieDetails'>
+        <div className="movieDescription container pt-5">
+          <img src={movie.Poster} alt={movie.title} />
+          <div className="movieDetails">
             <h1 style={{ marginBottom: "1rem" }}>{movie.Title}</h1>
             <p>Released Year: {movie.Year}</p>
             <p>Actors: {movie.Actors}</p>
-            <p>Director:  {movie.Director}</p>
+            <p>Director: {movie.Director}</p>
             <p>Genre: {movie.Genre}</p>
             <p>Awards: {movie.Awards}</p>
-            <p>Price: {price.toFixed(2)}</p>
-
             <p>{movie.Plot}</p>
-            <button className="btn btn-outline-success addFavourite" onClick={handleAddToFavorites}>
+            <button
+              className="btn btn-outline-success addFavourite"
+              onClick={handleAddToFavorites}
+            >
               Add to Favorites
             </button>
-            <button className='btn btn-outline-primary addCart' onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-
+          
             <hr />
-            <div className='reviewDisplay'>
-              <h3 style={{ color: 'white' }}>Audience Reviews</h3>
+            <div className="reviewDisplay">
+              <h3 style={{ color: "white" }}>Audience Reviews</h3>
 
               {reviews && reviews.length > 0 ? (
                 reviews.map((review, reviewIndex) => (
                   <div className="review" key={reviewIndex}>
-                    <p className='user-name'>{review.name}</p>
+                    <p className="user-name">{review.name}</p>
                     <p className="review-text">{review.text}</p>
                     <p className="review-date">{review.date}</p>
                     {review.responses && review.responses.length > 0 && (
                       <div className="responses">
-                        <h4 style={{ color: "#919194", textAlign: "center" }}>Replies</h4>
+                        <h4 style={{ color: "#919194", textAlign: "center" }}>
+                          Replies
+                        </h4>
                         {review.responses.map((response, responseIndex) => (
                           <div className="response" key={responseIndex}>
-                            <p className='user-name'>{response.name}</p>
+                            <p className="user-name">{response.name}</p>
                             <p className="response-text">{response.text}</p>
                             <p className="response-date">{response.date}</p>
                           </div>
                         ))}
                       </div>
                     )}
-                    <form style={{ marginTop: "20px", marginLeft: "3rem", marginRight: "20px" }}
-                      onSubmit={(e) => handleAddResponse(e, reviewIndex)}>
+                    <form
+                      style={{
+                        marginTop: "20px",
+                        marginLeft: "3rem",
+                        marginRight: "20px",
+                      }}
+                      onSubmit={(e) => handleAddResponse(e, reviewIndex)}
+                    >
                       <div>
                         <input
                           type="text"
                           className="form-control"
                           id={`responseName${reviewIndex}`}
                           value={responseNameText}
-                          placeholder='Please Enter Your Name'
+                          placeholder="Please Enter Your Name"
                           onChange={handleResponseNameChange}
-                          style={{ width: "30%", marginBottom: "1rem" ,backgroundColor:'#45454b',color: 'white'}}
+                          style={{
+                            width: "30%",
+                            marginBottom: "1rem",
+                            backgroundColor: "#45454b",
+                            color: "white",
+                          }}
                         />
                       </div>
                       <div>
                         <textarea
                           className="form-control"
-                          placeholder='Join the discussion!'
+                          placeholder="Join the discussion!"
                           id={`responseInput${reviewIndex}`}
                           rows="2"
                           value={responseText}
-                          style={{backgroundColor:'#45454b',color: 'white'}}
+                          style={{ backgroundColor: "#45454b", color: "white" }}
                           onChange={handleResponseChange}
                         />
                       </div>
-                      <button style={{ marginTop: '10px' }} type="submit" className="btn btn-primary">Submit</button>
+                      <button
+                        style={{ marginTop: "10px" }}
+                        type="submit"
+                        className="btn btn-primary"
+                      >
+                        Submit
+                      </button>
                     </form>
                   </div>
                 ))
@@ -188,7 +189,7 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
               )}
             </div>
             <br />
-            <h3 style={{ color: 'white' }}>Create Your Own Review</h3>
+            <h3 style={{ color: "white" }}>Create Your Own Review</h3>
             <form onSubmit={handleAddReview}>
               <div>
                 <input
@@ -196,36 +197,37 @@ function MovieDescription({ addToFavorites, addToCart, isViewingMovie, setIsView
                   className="form-control"
                   id={`responseName${reviews.length}`}
                   value={nameText}
-                  placeholder='Please Enter Your Name'
+                  placeholder="Please Enter Your Name"
                   onChange={handleNameChange}
                   style={{ width: "30%" }}
                 />
               </div>
               <div>
-                <label htmlFor="reviewInput" className="form-label">Write a review</label>
+                <label htmlFor="reviewInput" className="form-label">
+                  Write a review
+                </label>
                 <textarea
                   className="form-control"
-                  placeholder='Write some reviews'
+                  placeholder="Write some reviews"
                   id={`responseInput${reviews.length}`}
                   rows="3"
                   value={reviewText}
-    
                   onChange={handleReviewChange}
                 />
               </div>
 
-              <button style={{ marginTop: '10px' }} type="submit" className="btn btn-primary">Submit</button>
+              <button
+                style={{ marginTop: "10px" }}
+                type="submit"
+                className="btn btn-primary"
+              >
+                Submit
+              </button>
             </form>
-
           </div>
-
         </div>
-
-      ) : null}
-
+  
     </>
   );
 }
 export default MovieDescription;
-
-

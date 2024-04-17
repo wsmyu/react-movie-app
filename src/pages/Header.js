@@ -8,6 +8,8 @@ import { LinkContainer } from "react-router-bootstrap";
 import NavListItem from "../components/NavListItem";
 import navListData from "../data/navListData";
 import Searchbox from "../components/Searchbox";
+import { CiLogin } from "react-icons/ci";
+import Button from "../components/Button";
 
 function Header(props) {
   const handleInputChanges = (e) => {
@@ -28,8 +30,9 @@ function Header(props) {
         {navListData.map((nav) => (
           <NavListItem key={nav._id} nav={nav} />
         ))}
-        <Searchbox />
       </ul>
+      <Searchbox />
+      <Button icon={<CiLogin />} text="Sign in" />
     </div>
     // <div className='navbar'>
     //   <Navbar bg="dark" variant="dark">
