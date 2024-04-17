@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-import CarouselSlide from './CarouselSlide'
-
+import Banner from "./Banner";
 
 
 function Home ({isViewingMovie,setIsViewingMovie}) {
-  const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=babd534350a103aaf9523014b99d7ede`;
+  const apiKey = process.env._API_KEY;
+  const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
   const topRatedUrl =
-    "https://api.themoviedb.org/3/movie/top_rated?api_key=babd534350a103aaf9523014b99d7ede&language=en-US&page=1";
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
   const [movies, setMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const navigate = useNavigate();
  
+  
   useEffect(() => {
     fetch(trendingUrl)
       .then((response) => response.json())
@@ -33,7 +34,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
   }, []);
 
   const handleMovieClick = (id) => {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=babd534350a103aaf9523014b99d7ede&language=en-US`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
 
     fetch(url)
       .then((response) => response.json())
@@ -48,11 +49,10 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
 
 
   return (
-   
-    <div className="container" style={{marginBottom:'90px'}}>
-       <CarouselSlide  />
-       
-      <h3>Trending Movies</h3>
+  
+    <div className="home-page">
+     
+      {/* <h3>Trending Movies</h3>
       <div className="row home-movie-list">
         {movies.slice(0, 6).map((movie) => (
           <div className="col-md-2" key={movie.id}>
@@ -87,7 +87,7 @@ function Home ({isViewingMovie,setIsViewingMovie}) {
 
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 
