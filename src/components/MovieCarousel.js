@@ -50,7 +50,7 @@ import "react-multi-carousel/lib/styles.css";
 import './movieCarousel.css';
 import { useNavigate } from "react-router-dom";
 
-const MovieCarousel = ({ slides,slideChange }) => {
+const MovieCarousel = ({ slides,handleSlideChange }) => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const navigate = useNavigate();
 
@@ -69,19 +69,19 @@ const MovieCarousel = ({ slides,slideChange }) => {
     },
   };
 
-  const handleOnClick=(id)=>{
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
+  // const handleOnClick=(id)=>{
+  //   const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`;
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        navigate(`/movie-description/${data.imdb_id}`);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       navigate(`/movie-description/${data.imdb_id}`);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
 
-  }
+  // }
   return (
     <div className="swiper">
    
@@ -100,7 +100,7 @@ const MovieCarousel = ({ slides,slideChange }) => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${slide.poster_path}`}
             alt="Preview"
-            onClick={()=>handleOnClick(slide.id)}
+            onClick={()=>handleSlideChange(slide.id)}
           />
         </div>
       ))}

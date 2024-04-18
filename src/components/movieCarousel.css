@@ -1,17 +1,13 @@
-.swiper{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
 
 .movieSwiper{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 10px;
-    width: 50vw;
-    background: rgba(0,0,0,0.3);
+    bottom: 1rem;
+    width: 55vw;
+    background: rgba(0,0,0,0.1);
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 40px rgba(255,255,255,0.5);
+    box-shadow: 0 0 40px rgba(255,255,255,0.8);
 }
 
 .swiper-slide{

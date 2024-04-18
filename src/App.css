@@ -1,12 +1,17 @@
 :root {
-  --primary: #9fa0a5;
+  --primary: #88898e;
 }
+
 .App {
   background-color: #1c1e1f;
   min-height: 100vh;
   min-width: 100vw;
+
 }
 
+.home-page {
+  max-height: 100vh;
+}
 
 p,
 h2,
@@ -153,34 +158,7 @@ h3,
   width: 400px;
 }
 
-.reviewDisplay {
-  display: block;
-  margin-top: 50px;
-}
 
-.review {
-  background-color: #45454b;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 10px;
-}
-
-.review p {
-  margin-left: 1rem;
-}
-
-.review .user-name,
-.review-date {
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.review-text {
-  font-size: 15px;
-  line-height: 1.5;
-  margin: 0;
-  margin-bottom: 1rem;
-}
 
 .card {
   width: 180px;
