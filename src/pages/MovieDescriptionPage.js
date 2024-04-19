@@ -10,8 +10,7 @@ function MovieDescription({ addToFavorites }) {
   const [reviewText, setReviewText] = useState("");
   const [reviews, setReviews] = useState([]);
   const [nameText, setNameText] = useState("");
-  const [responseText, setResponseText] = useState("");
-  const [responseNameText, setResponseNameText] = useState("");
+
 
   const handleNameChange = (e) => {
     setNameText(e.target.value);
@@ -87,8 +86,6 @@ function MovieDescription({ addToFavorites }) {
             reviews={reviews}
             nameText={nameText}
             reviewText={reviewText}
-            responseNameText={responseNameText}
-            responseText={responseText}
             handleNameChange={handleNameChange}
             handleReviewChange={handleReviewChange}
             handleAddReview={handleAddReview}

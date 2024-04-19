@@ -1,0 +1,22 @@
+.movie-search-list {
+  padding-top: 7rem;
+}
+.single-movie img {
+  width: 10rem;
+  border-radius: 1rem;
+}
+
+.movie-list img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.single-movie {
+  flex-basis: calc(20% - 20px);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.single-movie:hover {
+  cursor: pointer;
+}

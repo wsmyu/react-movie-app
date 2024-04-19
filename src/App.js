@@ -8,6 +8,7 @@ import Login from "./Login";
 import Footer from "./pages/Footer";
 import Banner from "./pages/Banner";
 import HomePage from "./pages/HomePage";
+import SearchResultPage from "./pages/SearchResultPage";
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -38,6 +39,10 @@ function App() {
             <Route
               path="/favorites"
               element={<Favorites favorites={favorites} setFavorites={setFavorites} />}
+            />
+             <Route
+              path="/search-result/:searchQuery"
+              element={<SearchResultPage />}
             />
             <Route
               path="/login"

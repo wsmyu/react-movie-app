@@ -34,35 +34,9 @@ h3,
   color: black;
 }
 
-.movieList img {
-  width: 200px;
-}
 
-.movieList img:hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
 
-.movieList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  margin-bottom: 60px;
-}
 
-.singleMovie {
-  flex-basis: calc(20% - 20px);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.singleMovie {
-  margin: 10px;
-}
-
-.singleMovie:hover {
-  cursor: pointer;
-}
 
 .moviePoster {
   margin-right: 20px;
@@ -157,7 +131,6 @@ h3,
 .addCart {
   width: 400px;
 }
-
 
 
 .card {
