@@ -7,8 +7,8 @@ const navListData = [
   },
   {
     _id: 2,
-    link: "#favorite",
-    name: "favorite",
+    link: "#favourite",
+    name: "favourite",
     active: true,
   },
 ];

@@ -100,7 +100,7 @@ function MovieDescription({ addToFavorites }) {
                   <div>
                     <input
                       type="text"
-                      className="form-control w-25"
+                      className="form-control w-25 text-white"
                       style={{ background: "transparent" }}
                       id={`responseName${reviews.length}`}
                       value={nameText}
@@ -110,7 +110,7 @@ function MovieDescription({ addToFavorites }) {
                   </div>
                   <div className="mt-3">
                     <textarea
-                      className="form-control"
+                      className="form-control text-white"
                       style={{ background: "transparent" }}
                       placeholder="Write some reviews"
                       id={`responseInput${reviews.length}`}
