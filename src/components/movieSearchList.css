@@ -1,9 +1,9 @@
 .movie-search-list {
-  padding-top: 7rem;
+padding: 7rem 4rem;
 }
 .single-movie img {
   width: 10rem;
-  border-radius: 1rem;
+
 }
 
 .movie-list img:hover {

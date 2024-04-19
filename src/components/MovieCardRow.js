@@ -23,16 +23,14 @@ const MovieCardRow = ({movies}) => {
     <div className="row home-movie-list">
     {movies.slice(0, 6).map((movie) => (
       <div className="col-md-2" key={movie.id}>
-        <div className="card h-100" onClick={()=>handleMovieClick(movie.id)} >
+        <div className=" card  h-50" onClick={()=>handleMovieClick(movie.id)} >
           <img
             className="home-movie-poster"
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
           
           />
-          <div className="card-body">
-            <h5 className="card-title">{movie.title}</h5>
-          </div>
+      
         </div>
       </div>
     ))}

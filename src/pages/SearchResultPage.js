@@ -9,8 +9,6 @@ const SearchResultPage = () => {
   const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=${apiKey}`;
 
   const fetchSearchResult = () => {
-    console.log(searchQuery)
-    console.log(url);
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
