@@ -17,7 +17,8 @@ Movie Max is a React-based web application that allows users to browse the newes
 - CSS
 
 ## Home Page
-![Screenshot 2024-04-19 131018](https://github.com/wsmyu/react-movie-app/assets/118221964/9990e93f-7c33-4b8e-b2dd-a95ec178fd6d)
+![image](https://github.com/wsmyu/react-movie-app/assets/118221964/34b56e6f-000b-4b06-b2ac-1daf2011b15c)
+
 ![image](https://github.com/wsmyu/react-movie-app/assets/118221964/def91107-991c-4948-98aa-9d306c2a8e42)
 
 ## Search Result Page
